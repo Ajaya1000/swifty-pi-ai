@@ -1,4 +1,5 @@
 // Created by Ajaya Mati on 2026 Feb 13
+
 import Foundation
 
 public final class PiAI: Sendable {
@@ -8,8 +9,7 @@ public final class PiAI: Sendable {
         
     }
     
-    public func getModel(provider: KnownProvider, modelId: KnownModelId) -> KnownModelId? {
-        // For now, validate against the registry and return the canonical instance
-        ModelRegistry.model(provider: provider, id: modelId.id)
-    }
+//    public func getModel<M: ModelProvider>(provider: M, modelId: M.T) async {
+//        await ModelRepository.shared.resolve(provider: provider.Self, modelId: modelId)
+//    }
 }

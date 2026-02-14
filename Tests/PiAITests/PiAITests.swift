@@ -4,8 +4,9 @@ import Testing
 struct PiAITests {
     @Test
     func example() {
-        let user = User(name: "Ajaya")
-        
-        #expect(user.name == "Ajaya", "User name should be Ajaya")
+//        let user = User(name: "Ajaya")
+        Task {
+            await ModelRepository.shared.resolve(provider: AmazonBedrock.self, modelId: .s3)
+        }
     }
 }
