@@ -4,6 +4,7 @@
 //
 //  Created by Ajaya Mati on 13/02/26.
 //
+import SharedType
 
 public protocol ModelResolver {
     associatedtype ModelID: Hashable & Sendable

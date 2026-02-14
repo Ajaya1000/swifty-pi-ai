@@ -5,6 +5,10 @@ import PackageDescription
 
 let package = Package(
     name: "PiAI",
+    platforms: [
+        .iOS(.v15),
+        .macOS(.v13)
+    ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
@@ -16,13 +20,13 @@ let package = Package(
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "ProviderConfigShared",
-            path: "Sources/ProviderConfigShared",
+            name: "SharedType",
+            path: "Sources/SharedType",
         ),
         .target(
             name: "PiAI",
             dependencies: [
-                "ProviderConfigShared"
+                "SharedType"
             ],
             path: "Sources/PiAI",
         ),
@@ -33,7 +37,7 @@ let package = Package(
         .executableTarget(
             name: "ModelCodeGenTool",
             dependencies: [
-                "ProviderConfigShared"
+                "SharedType"
             ],
             path: "Tools/ModelCodeGen"
         ),
@@ -52,3 +56,4 @@ let package = Package(
         )
     ]
 )
+

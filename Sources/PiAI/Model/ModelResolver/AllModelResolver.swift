@@ -4,6 +4,7 @@
 //
 //  Created by Ajaya Mati on 14/02/26.
 //
+import SharedType
 
 struct AmazonBedrock: ModelResolver {
     enum ModelID: String, Hashable {
