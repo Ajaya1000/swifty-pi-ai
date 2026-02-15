@@ -46,7 +46,7 @@ let package = Package(
             capability: .command(
                 intent: .custom(verb: "model-codegen", description: "Creates the models for all providers"),
                 permissions: [
-                    .allowNetworkConnections(scope: .all(ports: []), reason: "Fetches all the models avaialble for each provider"),
+                    .allowNetworkConnections(scope: .all(), reason: "Fetches all the models avaialble for each provider"),
                     .writeToPackageDirectory(reason: "Writes the generated models to the package directory")
                 ]
             ),

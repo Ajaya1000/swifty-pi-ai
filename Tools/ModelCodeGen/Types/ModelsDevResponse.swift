@@ -11,12 +11,19 @@ struct ModelsDevResponse: Decodable {
     
     init(from decoder: any Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.data = try container.decode([KnownProvider : ModelsDevProvider].self)
+        let intermediateData = try container.decode([String : ModelsDevProvider].self)
+        
+        self.data = intermediateData.reduce(into: [:]) { result, entry in
+            let (key, value) = entry
+            if let providerKey = KnownProvider(rawValue: key) {
+                result[providerKey] = value
+            }
+        }
     }
 }
 
 struct ModelsDevProvider: Decodable {
-    let api: String
+    let api: String?
     let models: [ModelsDevModel]
     
     enum CodingKeys: CodingKey {
@@ -26,7 +33,7 @@ struct ModelsDevProvider: Decodable {
     
     init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.api = try container.decode(String.self, forKey: .api)
+        self.api = try container.decodeIfPresent(String.self, forKey: .api)
         let modelMap = try container.decode([String: ModelsDevModel].self, forKey: .models)
         self.models = Array(modelMap.values)
     }
@@ -48,8 +55,8 @@ extension ModelsDevModel: ModelRepresentable {
         reasoning ?? false
     }
     
-    var supportedInputTypes: [SharedType.SuppportedInputType] {
-        modalities?.input ?? [.text]
+    var supportedInputTypes: [SuppportedInputType] {
+        modalities?.input?.compactMap { SuppportedInputType(rawValue: $0)} ?? [.text]
     }
     
     var associatedCosts: ModelCost {
@@ -107,7 +114,7 @@ extension ModelsDevModel {
     }
     
     struct Modalities: Decodable {
-        let input: [SuppportedInputType]?
+        let input: [String]?
     }
     
     struct Provider: Decodable {

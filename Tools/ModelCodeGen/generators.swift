@@ -18,7 +18,7 @@ func loadOpenRouterModels() async throws -> ProviderModelPair {
     
     let modelList = response.data.compactMap { m -> Model in
         
-        let api: KnownApi = .openaiCompletions()
+        let api: KnownApi = KnownProvider.openrouter.api()
         let baseURL: String = KnownProvider.openrouter.baseURL()
         
         let model = Util.getModel(with: .openrouter, api: api, baseUrl: baseURL, for: m)
@@ -39,7 +39,15 @@ func loadModelsDevModelList() async throws -> [ProviderModelPair] {
     
     let response: ModelsDevResponse = try await NetworkClient.shared.fetchData(urlString: Constants.EndPoints.modelsDev)
     
-    let providerModelList = response.data.map { (providerKey, ProviderData) -> ProviderModelPair in
+    let providerModelList = response.data.compactMap { (providerKey, ProviderData) -> ProviderModelPair? in
+        
+        // Valid for these provider
+        let validProviders: [KnownProvider] = [.amazonBedrock, .anthropic, .google, .openai, .groq, .cerebras, .xai, .zai, .mistral, .huggingface, .minimax, .minimaxCn, .kimiCoding, .opencode, .githubCopilot]
+        
+        guard validProviders.contains(providerKey) else {
+            // skips for other providers
+            return nil
+        }
         
         let models: [Model] = ProviderData.models.compactMap { m -> Model? in
             guard m.isValid else {
@@ -76,17 +84,11 @@ func getIdentifier(for provider: KnownProvider, model: ModelsDevModel) -> String
     }
 }
 
-func generateModels() async {
-    do {
-        let modelDevsModelsPairList = try await loadModelsDevModelList()
-        let openRouterModelsPair = try await loadOpenRouterModels()
-        var allProviderModelPairs: [ProviderModelPair] = []
-        
-        allProviderModelPairs.append(contentsOf: modelDevsModelsPairList)
-        allProviderModelPairs.append(openRouterModelsPair)
-    } catch {
-        print(
-            "Failed with ", error
-        )
-    }
+func generateModels() async throws {
+    let modelDevsModelsPairList = try await loadModelsDevModelList()
+    let openRouterModelsPair = try await loadOpenRouterModels()
+    var allProviderModelPairs: [ProviderModelPair] = []
+    
+    allProviderModelPairs.append(contentsOf: modelDevsModelsPairList)
+    allProviderModelPairs.append(openRouterModelsPair)
 }

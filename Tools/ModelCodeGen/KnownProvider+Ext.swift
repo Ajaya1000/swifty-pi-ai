@@ -41,6 +41,8 @@ extension KnownProvider {
             "https://api.minimaxi.com/anthropic"
         case .kimiCoding:
             "https://api.kimi.com/coding"
+        case .openrouter:
+            "https://openrouter.ai/api/v1"
         @unknown default:
             fatalError()
         }
@@ -57,7 +59,7 @@ extension KnownProvider {
                 .googleGenerativeAi
         case .openai:
                 .openaiResponses(compat: compat as? OpenAIResponsesCompat)
-        case .groq, .cerebras, .xai, .zai, .mistral, .huggingface, .minimax, .minimaxCn, .kimiCoding:
+        case .groq, .cerebras, .xai, .zai, .mistral, .huggingface, .minimax, .minimaxCn, .kimiCoding, .openrouter:
                 .openaiCompletions(compat: compat as? OpenAICompletionsCompat)
         case .opencode:
             getOpenCodeAPI(with: compat, identifier: identifier)
