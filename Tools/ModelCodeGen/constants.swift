@@ -8,6 +8,7 @@
 enum Constants {
     enum EndPoints {
         static let modelsDev: String = "https://models.dev/api.json"
+        static let openRouter: String = "https://openrouter.ai/api/v1/models"
     }
 }
 

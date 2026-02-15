@@ -9,7 +9,7 @@ import SharedType
 
 extension KnownProvider {
     // TODO: Remove unknown default
-    func baseURL(identifier: String?) -> String {
+    func baseURL(identifier: String? = nil) -> String {
         switch self {
         case .amazonBedrock:
             "https://bedrock-runtime.us-east-1.amazonaws.com"

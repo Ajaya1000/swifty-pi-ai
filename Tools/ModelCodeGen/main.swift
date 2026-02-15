@@ -10,8 +10,31 @@ import SharedType
 
 typealias ProviderModelPair = (provider: KnownProvider, model: [Model])
 
-/// Get map of model corresponding to the `KnownProvider` from Models.dev
-func loadModelsDevData() async throws -> [ProviderModelPair] {
+/// Get list of model corresponding to the `KnownProvider` from OpenRouter
+func loadOpenRouterModels() async throws -> ProviderModelPair {
+    print("Fetching models from OpenRouter API...")
+    
+    let response: OpenRouterResponse = try await NetworkClient.shared.fetchData(urlString: Constants.EndPoints.openRouter)
+    
+    let modelList = response.data.compactMap { m -> Model in
+        
+        let api: KnownApi = .openaiCompletions()
+        let baseURL: String = KnownProvider.openrouter.baseURL()
+        
+        let model = Util.getModel(with: .openrouter, api: api, baseUrl: baseURL, for: m)
+        
+        return model
+    }
+    
+    print("Loaded \(modelList.count) tool-capable models from openRouter")
+    
+    return (.openrouter, modelList)
+}
+
+// TODO: Add AI Gateway Models
+
+/// Get list of model corresponding to the `KnownProvider` from Models.dev
+func loadModelsDevModelList() async throws -> [ProviderModelPair] {
     print("Fetching models from models.dev API...")
     
     let response: ModelsDevResponse = try await NetworkClient.shared.fetchData(urlString: Constants.EndPoints.modelsDev)
@@ -54,5 +77,16 @@ func getIdentifier(for provider: KnownProvider, model: ModelsDevModel) -> String
 }
 
 func generateModels() async {
-    
+    do {
+        let modelDevsModelsPairList = try await loadModelsDevModelList()
+        let openRouterModelsPair = try await loadOpenRouterModels()
+        var allProviderModelPairs: [ProviderModelPair] = []
+        
+        allProviderModelPairs.append(contentsOf: modelDevsModelsPairList)
+        allProviderModelPairs.append(openRouterModelsPair)
+    } catch {
+        print(
+            "Failed with ", error
+        )
+    }
 }

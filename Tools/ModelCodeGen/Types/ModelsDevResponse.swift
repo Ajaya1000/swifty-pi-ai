@@ -49,7 +49,7 @@ extension ModelsDevModel: ModelRepresentable {
     }
     
     var supportedInputTypes: [SharedType.SuppportedInputType] {
-        modalities?.input ?? []
+        modalities?.input ?? [.text]
     }
     
     var associatedCosts: ModelCost {

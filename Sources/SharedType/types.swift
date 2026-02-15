@@ -18,8 +18,8 @@ enum KnownAPIType: String, Codable, CaseIterable {
 }
 
 public enum KnownApi: Codable {
-    case openaiCompletions(compat: OpenAICompletionsCompat?)
-    case openaiResponses(compat: OpenAIResponsesCompat?)
+    case openaiCompletions(compat: OpenAICompletionsCompat? = nil)
+    case openaiResponses(compat: OpenAIResponsesCompat? = nil)
     case azureOpenaiResponses
     case openaiCodexResponses
     case anthropicMessages
