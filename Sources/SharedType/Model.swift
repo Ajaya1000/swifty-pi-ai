@@ -5,7 +5,7 @@
 //  Created by Ajaya Mati on 13/02/26.
 //
 
-public final class Model: Codable {
+public final class Model: Codable, @unchecked Sendable {
     public let id: String
     public let name: String
     public let provider: String

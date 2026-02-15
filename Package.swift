@@ -29,6 +29,9 @@ let package = Package(
                 "SharedType"
             ],
             path: "Sources/PiAI",
+            resources: [
+                .process("Generated/AllModels.snapshot.json")
+            ]
         ),
         .testTarget(
             name: "PiAITests",
@@ -56,4 +59,3 @@ let package = Package(
         )
     ]
 )
-

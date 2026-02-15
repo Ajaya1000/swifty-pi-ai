@@ -7,4 +7,5 @@
 
 enum GeneratorError: Error {
     case failed
+    case missingSnapshot(String)
 }

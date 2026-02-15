@@ -11,6 +11,21 @@ import Foundation
 struct ModelCodeGenTool {
     static func main() async throws {
         print("<<<<=========== Generating Models ========>>>>")
-        try await generateModels()
+        let outputPath = parseOutputPath(arguments: CommandLine.arguments)
+        let useExistingSnapshot = CommandLine.arguments.contains("--use-existing-snapshot")
+        try await generateModels(outputPath: outputPath, useExistingSnapshot: useExistingSnapshot)
+    }
+    
+    private static func parseOutputPath(arguments: [String]) -> String? {
+        guard let outputFlagIndex = arguments.firstIndex(of: "--output") else {
+            return nil
+        }
+        
+        let outputValueIndex = arguments.index(after: outputFlagIndex)
+        guard outputValueIndex < arguments.count else {
+            return nil
+        }
+        
+        return arguments[outputValueIndex]
     }
 }
