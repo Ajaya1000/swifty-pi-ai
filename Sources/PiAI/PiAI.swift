@@ -8,8 +8,4 @@ public final class PiAI: Sendable {
     private init() {
         
     }
-    
-//    public func getModel<M: ModelProvider>(provider: M, modelId: M.T) async {
-//        await ModelRepository.shared.resolve(provider: provider.Self, modelId: modelId)
-//    }
 }

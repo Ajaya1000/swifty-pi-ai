@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "PiAI",
+    name: "SwiftyPiAI",
     platforms: [
         .iOS(.v15),
         .macOS(.v13)
@@ -12,8 +12,8 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "PiAI",
-            targets: ["PiAI"]
+            name: "SwiftyPiAI",
+            targets: ["PiAI", "SharedType"]
         ),
     ],
     targets: [
@@ -32,7 +32,7 @@ let package = Package(
         ),
         .testTarget(
             name: "PiAITests",
-            dependencies: ["PiAI"]
+            dependencies: ["PiAI", "SharedType"]
         ),
         .executableTarget(
             name: "ModelCodeGenTool",

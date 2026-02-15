@@ -8,7 +8,7 @@
 import Foundation
 import SharedType
 
-typealias ProviderModelPair = (provider: KnownProvider, model: [Model])
+typealias ProviderModelPair = (provider: KnownProvider, models: [Model])
 
 /// Get list of model corresponding to the `KnownProvider` from OpenRouter
 func loadOpenRouterModels() async throws -> ProviderModelPair {
@@ -91,4 +91,11 @@ func generateModels() async throws {
     
     allProviderModelPairs.append(contentsOf: modelDevsModelsPairList)
     allProviderModelPairs.append(openRouterModelsPair)
+    
+    let modelMap: [KnownProvider: [Model]]
+        = allProviderModelPairs
+        .reduce(into: [KnownProvider: [Model]]()) { result, pair in
+            result[pair.provider, default: []] += pair.models
+        }
+    
 }

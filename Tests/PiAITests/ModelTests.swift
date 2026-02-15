@@ -7,11 +7,12 @@
 
 import Testing
 import PiAI
+import SharedType
 
 struct ModelTests {
 
     @Test func checkInitialization() async throws {
-//        let model = Model<OpenAIResponsesCompat>
+        #expect(KnownProvider.amazonBedrock.rawValue == "amazon-bedrock")
     }
 
 }
