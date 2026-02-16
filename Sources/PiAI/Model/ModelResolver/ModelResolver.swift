@@ -6,8 +6,26 @@
 //
 import SharedType
 
-public protocol ModelResolver {
-    associatedtype ModelID: Hashable & Sendable
+protocol ModelResolver: Sendable {
+    func resolve() throws(ModelResolverError) -> Model
     
-    static func resolve(for modelId: ModelID) -> Model
+    static func availableModels() -> [Self]
+    
+    init?(rawValue: String)
+
+    var rawValue: String { get }
+
+    static var identifier: String { get }
+}
+
+extension ModelResolver {
+    func resolve() throws(ModelResolverError) -> Model {
+        try ModelRepository.resolve(provider: Self.identifier, modelId: rawValue)
+    }
+}
+
+extension ModelResolver where Self: CaseIterable {
+    static func availableModels() -> [Self] {
+        Array(Self.allCases)
+    }
 }

@@ -5,7 +5,7 @@
 //  Created by Ajaya Mati on 13/02/26.
 //
 
-public final class Model: Codable, @unchecked Sendable {
+public final class Model: Codable, Sendable {
     public let id: String
     public let name: String
     public let provider: String
@@ -34,7 +34,7 @@ public final class Model: Codable, @unchecked Sendable {
 }
 
 /// All the property defines as per $/million tokens
-public struct ModelCost: Codable {
+public struct ModelCost: Codable, Sendable {
     public let input: Double
     public let output: Double
     public let cacheRead: Double

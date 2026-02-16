@@ -13,6 +13,13 @@ struct ModelTests {
 
     @Test func checkInitialization() async throws {
         #expect(KnownProvider.amazonBedrock.rawValue == "amazon-bedrock")
+
+//        try KnownProvider.amazonBedrock.modelResolver.resolve(for: )
+        #expect(throws: ModelResolverError.self) {
+            let value = try KnownProvider.amazonBedrock.resolve(for: "random") //
+        }
+        
+        let value = try KnownProvider.amazonBedrock.resolve(for: "amazo")
     }
 
 }

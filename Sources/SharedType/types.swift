@@ -17,7 +17,7 @@ enum KnownAPIType: String, Codable, CaseIterable {
     case googleVertex = "google-vertex"
 }
 
-public enum KnownApi: Codable {
+public enum KnownApi: Codable, Sendable {
     case openaiCompletions(compat: OpenAICompletionsCompat? = nil)
     case openaiResponses(compat: OpenAIResponsesCompat? = nil)
     case azureOpenaiResponses
@@ -89,13 +89,13 @@ public enum KnownApi: Codable {
     }
 }
 
-public enum SuppportedInputType: String, CaseIterable, Codable {
+public enum SuppportedInputType: String, CaseIterable, Codable, Sendable {
     case text = "text"
     case image = "image"
     case audio = "audio"
 }
 
-public protocol Compat: Codable {
+public protocol Compat: Codable, Sendable {
     
 }
 
@@ -132,13 +132,13 @@ public struct OpenAIResponsesCompat: Compat {
     
 }
 
-public enum MaxTokensField: String, Codable {
+public enum MaxTokensField: String, Codable, Sendable {
     case maxCompletionTokens = "max_completion_tokens"
     case maxTokens = "max_tokens"
 }
 
 // TODO: Add description
-public enum ThinkingFormat: String, Codable {
+public enum ThinkingFormat: String, Codable, Sendable {
     case openai
     case zai
     case qwen

@@ -182,42 +182,65 @@ private func renderModelResolvers(snapshot: ModelSnapshot) -> String {
     lines.append("")
     lines.append("import SharedType")
     lines.append("")
-    
-    for provider in snapshot.providers {
-        guard !provider.models.isEmpty else {
-            continue
+
+    let modelsByProvider = Dictionary(uniqueKeysWithValues: snapshot.providers.map { ($0.provider, $0.models) })
+    let allProviders = KnownProvider.allCases.sorted { $0.rawValue < $1.rawValue }
+
+    for provider in allProviders {
+        let providerName = provider.rawValue
+        let enumName = "\(providerEnumBaseName(providerName))ModelResolver"
+        let providerModels = (modelsByProvider[providerName] ?? []).sorted { $0.id < $1.id }
+        let hasCases = !providerModels.isEmpty
+
+        if hasCases {
+            lines.append("public enum \(enumName): String, ModelResolver, CaseIterable {")
+        } else {
+            lines.append("public enum \(enumName): ModelResolver, CaseIterable {")
         }
-        
-        let enumName = "\(providerEnumBaseName(provider.provider))ModelType"
-        lines.append("enum \(enumName) {")
-        
+
         var usedCases = Set<String>()
-        let caseItems: [(caseName: String, model: Model)] = provider.models.map { model in
+        let caseItems: [(caseName: String, model: Model)] = providerModels.map { model in
             let caseName = uniqueCaseName(
                 base: sanitizedCaseName(from: model.id),
                 usedNames: &usedCases
             )
             return (caseName, model)
         }
-        
-        for caseItem in caseItems {
-            lines.append("    case \(caseItem.caseName)")
+
+        if hasCases {
+            for caseItem in caseItems {
+                lines.append("    case \(caseItem.caseName) = \(quoted(caseItem.model.id))")
+            }
+        } else {
+            lines.append("    public static let allCases: [Self] = []")
+            lines.append("")
+            lines.append("    public init?(rawValue: String) {")
+            lines.append("        nil")
+            lines.append("    }")
+            lines.append("")
+            lines.append("    public var rawValue: String {")
+            lines.append("        switch self {}")
+            lines.append("    }")
         }
         
         lines.append("")
-        lines.append("    func resolve() throws(ModelResolverError) -> Model {")
-        lines.append("        switch self {")
-        
-        for caseItem in caseItems {
-            lines.append("        case .\(caseItem.caseName):")
-            lines.append("            try ModelRepository.resolve(provider: \(quoted(provider.provider)), modelId: \(quoted(caseItem.model.id)))")
-        }
-        
-        lines.append("        }")
-        lines.append("    }")
+        lines.append("    static let identifier = \(quoted(providerName))")
         lines.append("}")
         lines.append("")
     }
+
+    lines.append("extension KnownProvider {")
+    lines.append("    var modelResolverType: any ModelResolver.Type {")
+    lines.append("        switch self {")
+    for provider in allProviders {
+        let enumName = "\(providerEnumBaseName(provider.rawValue))ModelResolver"
+        lines.append("        case .\(provider):")
+        lines.append("            \(enumName).self")
+    }
+    lines.append("        }")
+    lines.append("    }")
+    lines.append("}")
+    lines.append("")
     
     return lines.joined(separator: "\n")
 }

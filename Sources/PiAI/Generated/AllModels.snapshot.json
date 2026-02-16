@@ -1,5 +1,5 @@
 {
-  "generatedAt" : "2026-02-15T15:12:46Z",
+  "generatedAt" : "2026-02-16T17:34:20Z",
   "providers" : [
     {
       "models" : [
@@ -648,6 +648,27 @@
           ],
           "maxTokens" : 81920,
           "name" : "DeepSeek-V3.1",
+          "provider" : "amazon-bedrock",
+          "reasoning" : true
+        },
+        {
+          "api" : {
+            "type" : "bedrock-converse-stream"
+          },
+          "baseUrl" : "https:\/\/bedrock-runtime.us-east-1.amazonaws.com",
+          "contextWindow" : 163840,
+          "cost" : {
+            "cacheRead" : 0,
+            "cacheWrite" : 0,
+            "input" : 0.62,
+            "output" : 1.85
+          },
+          "id" : "deepseek.v3.2-v1:0",
+          "input" : [
+            "text"
+          ],
+          "maxTokens" : 81920,
+          "name" : "DeepSeek-V3.2",
           "provider" : "amazon-bedrock",
           "reasoning" : true
         },
@@ -2443,8 +2464,8 @@
           "cost" : {
             "cacheRead" : 0,
             "cacheWrite" : 0,
-            "input" : 0,
-            "output" : 0
+            "input" : 2.25,
+            "output" : 2.75
           },
           "id" : "zai-glm-4.7",
           "input" : [
@@ -9348,9 +9369,9 @@
             "type" : "openai-completions"
           },
           "baseUrl" : "https:\/\/openrouter.ai\/api\/v1",
-          "contextWindow" : 204800,
+          "contextWindow" : 196608,
           "cost" : {
-            "cacheRead" : 0.03,
+            "cacheRead" : 0.029,
             "cacheWrite" : 0,
             "input" : 0.3,
             "output" : 1.2
@@ -9359,7 +9380,7 @@
           "input" : [
             "text"
           ],
-          "maxTokens" : 131072,
+          "maxTokens" : 4096,
           "name" : "MiniMax: MiniMax M2.5",
           "provider" : "openrouter",
           "reasoning" : true
@@ -9988,18 +10009,18 @@
             "type" : "openai-completions"
           },
           "baseUrl" : "https:\/\/openrouter.ai\/api\/v1",
-          "contextWindow" : 262144,
+          "contextWindow" : 131072,
           "cost" : {
-            "cacheRead" : 0.195,
+            "cacheRead" : 0.15,
             "cacheWrite" : 0,
-            "input" : 0.39,
-            "output" : 1.9
+            "input" : 0.39999999999999997,
+            "output" : 2
           },
           "id" : "moonshotai\/kimi-k2-0905",
           "input" : [
             "text"
           ],
-          "maxTokens" : 262144,
+          "maxTokens" : 4096,
           "name" : "MoonshotAI: Kimi K2 0905",
           "provider" : "openrouter",
           "reasoning" : false
@@ -10053,17 +10074,17 @@
           "baseUrl" : "https:\/\/openrouter.ai\/api\/v1",
           "contextWindow" : 262144,
           "cost" : {
-            "cacheRead" : 0.11249999999999999,
+            "cacheRead" : 0,
             "cacheWrite" : 0,
-            "input" : 0.44999999999999996,
-            "output" : 0.44
+            "input" : 0.22999999999999998,
+            "output" : 3
           },
           "id" : "moonshotai\/kimi-k2.5",
           "input" : [
             "text",
             "image"
           ],
-          "maxTokens" : 65535,
+          "maxTokens" : 262144,
           "name" : "MoonshotAI: Kimi K2.5",
           "provider" : "openrouter",
           "reasoning" : true
@@ -12945,6 +12966,50 @@
             "type" : "openai-completions"
           },
           "baseUrl" : "https:\/\/openrouter.ai\/api\/v1",
+          "contextWindow" : 262144,
+          "cost" : {
+            "cacheRead" : 0,
+            "cacheWrite" : 0,
+            "input" : 0.6,
+            "output" : 3.5999999999999996
+          },
+          "id" : "qwen\/qwen3.5-397b-a17b",
+          "input" : [
+            "text",
+            "image"
+          ],
+          "maxTokens" : 65536,
+          "name" : "Qwen: Qwen3.5 397B A17B",
+          "provider" : "openrouter",
+          "reasoning" : true
+        },
+        {
+          "api" : {
+            "type" : "openai-completions"
+          },
+          "baseUrl" : "https:\/\/openrouter.ai\/api\/v1",
+          "contextWindow" : 1000000,
+          "cost" : {
+            "cacheRead" : 0,
+            "cacheWrite" : 0,
+            "input" : 0.39999999999999997,
+            "output" : 2.4
+          },
+          "id" : "qwen\/qwen3.5-plus-02-15",
+          "input" : [
+            "text",
+            "image"
+          ],
+          "maxTokens" : 65536,
+          "name" : "Qwen: Qwen3.5 Plus 2026-02-15",
+          "provider" : "openrouter",
+          "reasoning" : true
+        },
+        {
+          "api" : {
+            "type" : "openai-completions"
+          },
+          "baseUrl" : "https:\/\/openrouter.ai\/api\/v1",
           "contextWindow" : 32768,
           "cost" : {
             "cacheRead" : 0,
@@ -13836,7 +13901,7 @@
           "cost" : {
             "cacheRead" : 0,
             "cacheWrite" : 0,
-            "input" : 0.75,
+            "input" : 0.3,
             "output" : 2.5500000000000003
           },
           "id" : "z-ai\/glm-5",
