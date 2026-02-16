@@ -224,7 +224,7 @@ private func renderModelResolvers(snapshot: ModelSnapshot) -> String {
         }
         
         lines.append("")
-        lines.append("    static let identifier = \(quoted(providerName))")
+        lines.append("    public static let identifier = \(quoted(providerName))")
         lines.append("}")
         lines.append("")
     }
@@ -239,6 +239,16 @@ private func renderModelResolvers(snapshot: ModelSnapshot) -> String {
     }
     lines.append("        }")
     lines.append("    }")
+    lines.append("}")
+    lines.append("")
+
+    lines.append("public enum ModelResolverTypes {")
+    for provider in allProviders {
+        let enumName = "\(providerEnumBaseName(provider.rawValue))ModelResolver"
+        lines.append("    public static var \(provider): \(enumName).Type {")
+        lines.append("        \(enumName).self")
+        lines.append("    }")
+    }
     lines.append("}")
     lines.append("")
     

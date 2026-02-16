@@ -97,7 +97,7 @@ public enum AmazonBedrockModelResolver: String, ModelResolver, CaseIterable {
     case zaiGlm47 = "zai.glm-4.7"
     case zaiGlm47Flash = "zai.glm-4.7-flash"
 
-    static let identifier = "amazon-bedrock"
+    public static let identifier = "amazon-bedrock"
 }
 
 public enum AnthropicModelResolver: String, ModelResolver, CaseIterable {
@@ -124,7 +124,7 @@ public enum AnthropicModelResolver: String, ModelResolver, CaseIterable {
     case claudeSonnet45 = "claude-sonnet-4-5"
     case claudeSonnet4520250929 = "claude-sonnet-4-5-20250929"
 
-    static let identifier = "anthropic"
+    public static let identifier = "anthropic"
 }
 
 public enum AzureOpenaiResponsesModelResolver: ModelResolver, CaseIterable {
@@ -138,7 +138,7 @@ public enum AzureOpenaiResponsesModelResolver: ModelResolver, CaseIterable {
         switch self {}
     }
 
-    static let identifier = "azure-openai-responses"
+    public static let identifier = "azure-openai-responses"
 }
 
 public enum CerebrasModelResolver: String, ModelResolver, CaseIterable {
@@ -147,7 +147,7 @@ public enum CerebrasModelResolver: String, ModelResolver, CaseIterable {
     case qwen3235bA22bInstruct2507 = "qwen-3-235b-a22b-instruct-2507"
     case zaiGlm47 = "zai-glm-4.7"
 
-    static let identifier = "cerebras"
+    public static let identifier = "cerebras"
 }
 
 public enum GithubCopilotModelResolver: String, ModelResolver, CaseIterable {
@@ -172,7 +172,7 @@ public enum GithubCopilotModelResolver: String, ModelResolver, CaseIterable {
     case gpt52Codex = "gpt-5.2-codex"
     case grokCodeFast1 = "grok-code-fast-1"
 
-    static let identifier = "github-copilot"
+    public static let identifier = "github-copilot"
 }
 
 public enum GoogleModelResolver: String, ModelResolver, CaseIterable {
@@ -203,7 +203,7 @@ public enum GoogleModelResolver: String, ModelResolver, CaseIterable {
     case geminiLive25Flash = "gemini-live-2.5-flash"
     case geminiLive25FlashPreviewNativeAudio = "gemini-live-2.5-flash-preview-native-audio"
 
-    static let identifier = "google"
+    public static let identifier = "google"
 }
 
 public enum GoogleAntigravityModelResolver: ModelResolver, CaseIterable {
@@ -217,7 +217,7 @@ public enum GoogleAntigravityModelResolver: ModelResolver, CaseIterable {
         switch self {}
     }
 
-    static let identifier = "google-antigravity"
+    public static let identifier = "google-antigravity"
 }
 
 public enum GoogleGeminiCliModelResolver: ModelResolver, CaseIterable {
@@ -231,7 +231,7 @@ public enum GoogleGeminiCliModelResolver: ModelResolver, CaseIterable {
         switch self {}
     }
 
-    static let identifier = "google-gemini-cli"
+    public static let identifier = "google-gemini-cli"
 }
 
 public enum GoogleVertexModelResolver: ModelResolver, CaseIterable {
@@ -245,7 +245,7 @@ public enum GoogleVertexModelResolver: ModelResolver, CaseIterable {
         switch self {}
     }
 
-    static let identifier = "google-vertex"
+    public static let identifier = "google-vertex"
 }
 
 public enum GroqModelResolver: String, ModelResolver, CaseIterable {
@@ -267,7 +267,7 @@ public enum GroqModelResolver: String, ModelResolver, CaseIterable {
     case qwenQwq32b = "qwen-qwq-32b"
     case qwenQwen332b = "qwen/qwen3-32b"
 
-    static let identifier = "groq"
+    public static let identifier = "groq"
 }
 
 public enum HuggingfaceModelResolver: String, ModelResolver, CaseIterable {
@@ -289,7 +289,7 @@ public enum HuggingfaceModelResolver: String, ModelResolver, CaseIterable {
     case zaiOrgGlm47Flash = "zai-org/GLM-4.7-Flash"
     case zaiOrgGlm5 = "zai-org/GLM-5"
 
-    static let identifier = "huggingface"
+    public static let identifier = "huggingface"
 }
 
 public enum KimiCodingModelResolver: ModelResolver, CaseIterable {
@@ -303,7 +303,7 @@ public enum KimiCodingModelResolver: ModelResolver, CaseIterable {
         switch self {}
     }
 
-    static let identifier = "kimi-coding"
+    public static let identifier = "kimi-coding"
 }
 
 public enum MinimaxModelResolver: String, ModelResolver, CaseIterable {
@@ -311,7 +311,7 @@ public enum MinimaxModelResolver: String, ModelResolver, CaseIterable {
     case minimaxM21 = "MiniMax-M2.1"
     case minimaxM25 = "MiniMax-M2.5"
 
-    static let identifier = "minimax"
+    public static let identifier = "minimax"
 }
 
 public enum MinimaxCnModelResolver: String, ModelResolver, CaseIterable {
@@ -319,7 +319,7 @@ public enum MinimaxCnModelResolver: String, ModelResolver, CaseIterable {
     case minimaxM21 = "MiniMax-M2.1"
     case minimaxM25 = "MiniMax-M2.5"
 
-    static let identifier = "minimax-cn"
+    public static let identifier = "minimax-cn"
 }
 
 public enum MistralModelResolver: String, ModelResolver, CaseIterable {
@@ -350,7 +350,7 @@ public enum MistralModelResolver: String, ModelResolver, CaseIterable {
     case pixtral12b = "pixtral-12b"
     case pixtralLargeLatest = "pixtral-large-latest"
 
-    static let identifier = "mistral"
+    public static let identifier = "mistral"
 }
 
 public enum OpenaiModelResolver: String, ModelResolver, CaseIterable {
@@ -397,7 +397,7 @@ public enum OpenaiModelResolver: String, ModelResolver, CaseIterable {
     case textEmbedding3Small = "text-embedding-3-small"
     case textEmbeddingAda002 = "text-embedding-ada-002"
 
-    static let identifier = "openai"
+    public static let identifier = "openai"
 }
 
 public enum OpenaiCodexModelResolver: ModelResolver, CaseIterable {
@@ -411,7 +411,7 @@ public enum OpenaiCodexModelResolver: ModelResolver, CaseIterable {
         switch self {}
     }
 
-    static let identifier = "openai-codex"
+    public static let identifier = "openai-codex"
 }
 
 public enum OpencodeModelResolver: String, ModelResolver, CaseIterable {
@@ -450,7 +450,7 @@ public enum OpencodeModelResolver: String, ModelResolver, CaseIterable {
     case qwen3Coder = "qwen3-coder"
     case trinityLargePreviewFree = "trinity-large-preview-free"
 
-    static let identifier = "opencode"
+    public static let identifier = "opencode"
 }
 
 public enum OpenrouterModelResolver: String, ModelResolver, CaseIterable {
@@ -797,7 +797,7 @@ public enum OpenrouterModelResolver: String, ModelResolver, CaseIterable {
     case zAiGlm47Flash = "z-ai/glm-4.7-flash"
     case zAiGlm5 = "z-ai/glm-5"
 
-    static let identifier = "openrouter"
+    public static let identifier = "openrouter"
 }
 
 public enum VercelAiGatewayModelResolver: ModelResolver, CaseIterable {
@@ -811,7 +811,7 @@ public enum VercelAiGatewayModelResolver: ModelResolver, CaseIterable {
         switch self {}
     }
 
-    static let identifier = "vercel-ai-gateway"
+    public static let identifier = "vercel-ai-gateway"
 }
 
 public enum XaiModelResolver: String, ModelResolver, CaseIterable {
@@ -838,7 +838,7 @@ public enum XaiModelResolver: String, ModelResolver, CaseIterable {
     case grokCodeFast1 = "grok-code-fast-1"
     case grokVisionBeta = "grok-vision-beta"
 
-    static let identifier = "xai"
+    public static let identifier = "xai"
 }
 
 public enum ZaiModelResolver: String, ModelResolver, CaseIterable {
@@ -852,7 +852,7 @@ public enum ZaiModelResolver: String, ModelResolver, CaseIterable {
     case glm47Flash = "glm-4.7-flash"
     case glm5 = "glm-5"
 
-    static let identifier = "zai"
+    public static let identifier = "zai"
 }
 
 extension KnownProvider {
@@ -903,5 +903,74 @@ extension KnownProvider {
         case .zai:
             ZaiModelResolver.self
         }
+    }
+}
+
+public enum ModelResolverTypes {
+    public static var amazonBedrock: AmazonBedrockModelResolver.Type {
+        AmazonBedrockModelResolver.self
+    }
+    public static var anthropic: AnthropicModelResolver.Type {
+        AnthropicModelResolver.self
+    }
+    public static var azureOpenaiResponses: AzureOpenaiResponsesModelResolver.Type {
+        AzureOpenaiResponsesModelResolver.self
+    }
+    public static var cerebras: CerebrasModelResolver.Type {
+        CerebrasModelResolver.self
+    }
+    public static var githubCopilot: GithubCopilotModelResolver.Type {
+        GithubCopilotModelResolver.self
+    }
+    public static var google: GoogleModelResolver.Type {
+        GoogleModelResolver.self
+    }
+    public static var googleAntigravity: GoogleAntigravityModelResolver.Type {
+        GoogleAntigravityModelResolver.self
+    }
+    public static var googleGeminiCli: GoogleGeminiCliModelResolver.Type {
+        GoogleGeminiCliModelResolver.self
+    }
+    public static var googleVertex: GoogleVertexModelResolver.Type {
+        GoogleVertexModelResolver.self
+    }
+    public static var groq: GroqModelResolver.Type {
+        GroqModelResolver.self
+    }
+    public static var huggingface: HuggingfaceModelResolver.Type {
+        HuggingfaceModelResolver.self
+    }
+    public static var kimiCoding: KimiCodingModelResolver.Type {
+        KimiCodingModelResolver.self
+    }
+    public static var minimax: MinimaxModelResolver.Type {
+        MinimaxModelResolver.self
+    }
+    public static var minimaxCn: MinimaxCnModelResolver.Type {
+        MinimaxCnModelResolver.self
+    }
+    public static var mistral: MistralModelResolver.Type {
+        MistralModelResolver.self
+    }
+    public static var openai: OpenaiModelResolver.Type {
+        OpenaiModelResolver.self
+    }
+    public static var openaiCodex: OpenaiCodexModelResolver.Type {
+        OpenaiCodexModelResolver.self
+    }
+    public static var opencode: OpencodeModelResolver.Type {
+        OpencodeModelResolver.self
+    }
+    public static var openrouter: OpenrouterModelResolver.Type {
+        OpenrouterModelResolver.self
+    }
+    public static var vercelAiGateway: VercelAiGatewayModelResolver.Type {
+        VercelAiGatewayModelResolver.self
+    }
+    public static var xai: XaiModelResolver.Type {
+        XaiModelResolver.self
+    }
+    public static var zai: ZaiModelResolver.Type {
+        ZaiModelResolver.self
     }
 }
