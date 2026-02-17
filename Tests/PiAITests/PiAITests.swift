@@ -7,6 +7,8 @@ struct PiAITests {
 //        let user = User(name: "Ajaya")
         Task {
 //            await ModelRepository.shared.resolve(provider: AmazonBedrock.self, modelId: .s3)
+
+        
         }
     }
 }

@@ -906,71 +906,73 @@ extension KnownProvider {
     }
 }
 
-public enum ModelResolverTypes {
-    public static var amazonBedrock: AmazonBedrockModelResolver.Type {
-        AmazonBedrockModelResolver.self
-    }
-    public static var anthropic: AnthropicModelResolver.Type {
-        AnthropicModelResolver.self
-    }
-    public static var azureOpenaiResponses: AzureOpenaiResponsesModelResolver.Type {
-        AzureOpenaiResponsesModelResolver.self
-    }
-    public static var cerebras: CerebrasModelResolver.Type {
-        CerebrasModelResolver.self
-    }
-    public static var githubCopilot: GithubCopilotModelResolver.Type {
-        GithubCopilotModelResolver.self
-    }
-    public static var google: GoogleModelResolver.Type {
-        GoogleModelResolver.self
-    }
-    public static var googleAntigravity: GoogleAntigravityModelResolver.Type {
-        GoogleAntigravityModelResolver.self
-    }
-    public static var googleGeminiCli: GoogleGeminiCliModelResolver.Type {
-        GoogleGeminiCliModelResolver.self
-    }
-    public static var googleVertex: GoogleVertexModelResolver.Type {
-        GoogleVertexModelResolver.self
-    }
-    public static var groq: GroqModelResolver.Type {
-        GroqModelResolver.self
-    }
-    public static var huggingface: HuggingfaceModelResolver.Type {
-        HuggingfaceModelResolver.self
-    }
-    public static var kimiCoding: KimiCodingModelResolver.Type {
-        KimiCodingModelResolver.self
-    }
-    public static var minimax: MinimaxModelResolver.Type {
-        MinimaxModelResolver.self
-    }
-    public static var minimaxCn: MinimaxCnModelResolver.Type {
-        MinimaxCnModelResolver.self
-    }
-    public static var mistral: MistralModelResolver.Type {
-        MistralModelResolver.self
-    }
-    public static var openai: OpenaiModelResolver.Type {
-        OpenaiModelResolver.self
-    }
-    public static var openaiCodex: OpenaiCodexModelResolver.Type {
-        OpenaiCodexModelResolver.self
-    }
-    public static var opencode: OpencodeModelResolver.Type {
-        OpencodeModelResolver.self
-    }
-    public static var openrouter: OpenrouterModelResolver.Type {
-        OpenrouterModelResolver.self
-    }
-    public static var vercelAiGateway: VercelAiGatewayModelResolver.Type {
-        VercelAiGatewayModelResolver.self
-    }
-    public static var xai: XaiModelResolver.Type {
-        XaiModelResolver.self
-    }
-    public static var zai: ZaiModelResolver.Type {
-        ZaiModelResolver.self
+public extension KnownProvider {
+    enum AllModelResolvers {
+        public static var amazonBedrock: AmazonBedrockModelResolver.Type {
+            AmazonBedrockModelResolver.self
+        }
+        public static var anthropic: AnthropicModelResolver.Type {
+            AnthropicModelResolver.self
+        }
+        public static var azureOpenaiResponses: AzureOpenaiResponsesModelResolver.Type {
+            AzureOpenaiResponsesModelResolver.self
+        }
+        public static var cerebras: CerebrasModelResolver.Type {
+            CerebrasModelResolver.self
+        }
+        public static var githubCopilot: GithubCopilotModelResolver.Type {
+            GithubCopilotModelResolver.self
+        }
+        public static var google: GoogleModelResolver.Type {
+            GoogleModelResolver.self
+        }
+        public static var googleAntigravity: GoogleAntigravityModelResolver.Type {
+            GoogleAntigravityModelResolver.self
+        }
+        public static var googleGeminiCli: GoogleGeminiCliModelResolver.Type {
+            GoogleGeminiCliModelResolver.self
+        }
+        public static var googleVertex: GoogleVertexModelResolver.Type {
+            GoogleVertexModelResolver.self
+        }
+        public static var groq: GroqModelResolver.Type {
+            GroqModelResolver.self
+        }
+        public static var huggingface: HuggingfaceModelResolver.Type {
+            HuggingfaceModelResolver.self
+        }
+        public static var kimiCoding: KimiCodingModelResolver.Type {
+            KimiCodingModelResolver.self
+        }
+        public static var minimax: MinimaxModelResolver.Type {
+            MinimaxModelResolver.self
+        }
+        public static var minimaxCn: MinimaxCnModelResolver.Type {
+            MinimaxCnModelResolver.self
+        }
+        public static var mistral: MistralModelResolver.Type {
+            MistralModelResolver.self
+        }
+        public static var openai: OpenaiModelResolver.Type {
+            OpenaiModelResolver.self
+        }
+        public static var openaiCodex: OpenaiCodexModelResolver.Type {
+            OpenaiCodexModelResolver.self
+        }
+        public static var opencode: OpencodeModelResolver.Type {
+            OpencodeModelResolver.self
+        }
+        public static var openrouter: OpenrouterModelResolver.Type {
+            OpenrouterModelResolver.self
+        }
+        public static var vercelAiGateway: VercelAiGatewayModelResolver.Type {
+            VercelAiGatewayModelResolver.self
+        }
+        public static var xai: XaiModelResolver.Type {
+            XaiModelResolver.self
+        }
+        public static var zai: ZaiModelResolver.Type {
+            ZaiModelResolver.self
+        }
     }
 }

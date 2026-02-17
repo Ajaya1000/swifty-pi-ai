@@ -12,28 +12,28 @@ import SharedType
 struct ModelTests {
 
     @Test func resolvesEveryProviderModelPairViaBothAccessPaths() throws {
-        try assertProviderResolvesAllPairs(.amazonBedrock, resolverType: ModelResolverTypes.amazonBedrock)
-        try assertProviderResolvesAllPairs(.anthropic, resolverType: ModelResolverTypes.anthropic)
-        try assertProviderResolvesAllPairs(.azureOpenaiResponses, resolverType: ModelResolverTypes.azureOpenaiResponses)
-        try assertProviderResolvesAllPairs(.cerebras, resolverType: ModelResolverTypes.cerebras)
-        try assertProviderResolvesAllPairs(.githubCopilot, resolverType: ModelResolverTypes.githubCopilot)
-        try assertProviderResolvesAllPairs(.google, resolverType: ModelResolverTypes.google)
-        try assertProviderResolvesAllPairs(.googleAntigravity, resolverType: ModelResolverTypes.googleAntigravity)
-        try assertProviderResolvesAllPairs(.googleGeminiCli, resolverType: ModelResolverTypes.googleGeminiCli)
-        try assertProviderResolvesAllPairs(.googleVertex, resolverType: ModelResolverTypes.googleVertex)
-        try assertProviderResolvesAllPairs(.groq, resolverType: ModelResolverTypes.groq)
-        try assertProviderResolvesAllPairs(.huggingface, resolverType: ModelResolverTypes.huggingface)
-        try assertProviderResolvesAllPairs(.kimiCoding, resolverType: ModelResolverTypes.kimiCoding)
-        try assertProviderResolvesAllPairs(.minimax, resolverType: ModelResolverTypes.minimax)
-        try assertProviderResolvesAllPairs(.minimaxCn, resolverType: ModelResolverTypes.minimaxCn)
-        try assertProviderResolvesAllPairs(.mistral, resolverType: ModelResolverTypes.mistral)
-        try assertProviderResolvesAllPairs(.openai, resolverType: ModelResolverTypes.openai)
-        try assertProviderResolvesAllPairs(.openaiCodex, resolverType: ModelResolverTypes.openaiCodex)
-        try assertProviderResolvesAllPairs(.opencode, resolverType: ModelResolverTypes.opencode)
-        try assertProviderResolvesAllPairs(.openrouter, resolverType: ModelResolverTypes.openrouter)
-        try assertProviderResolvesAllPairs(.vercelAiGateway, resolverType: ModelResolverTypes.vercelAiGateway)
-        try assertProviderResolvesAllPairs(.xai, resolverType: ModelResolverTypes.xai)
-        try assertProviderResolvesAllPairs(.zai, resolverType: ModelResolverTypes.zai)
+        try assertProviderResolvesAllPairs(.amazonBedrock, resolverType: KnownProvider.AllModelResolvers.amazonBedrock)
+        try assertProviderResolvesAllPairs(.anthropic, resolverType: KnownProvider.AllModelResolvers.anthropic)
+        try assertProviderResolvesAllPairs(.azureOpenaiResponses, resolverType: KnownProvider.AllModelResolvers.azureOpenaiResponses)
+        try assertProviderResolvesAllPairs(.cerebras, resolverType: KnownProvider.AllModelResolvers.cerebras)
+        try assertProviderResolvesAllPairs(.githubCopilot, resolverType: KnownProvider.AllModelResolvers.githubCopilot)
+        try assertProviderResolvesAllPairs(.google, resolverType: KnownProvider.AllModelResolvers.google)
+        try assertProviderResolvesAllPairs(.googleAntigravity, resolverType: KnownProvider.AllModelResolvers.googleAntigravity)
+        try assertProviderResolvesAllPairs(.googleGeminiCli, resolverType: KnownProvider.AllModelResolvers.googleGeminiCli)
+        try assertProviderResolvesAllPairs(.googleVertex, resolverType: KnownProvider.AllModelResolvers.googleVertex)
+        try assertProviderResolvesAllPairs(.groq, resolverType: KnownProvider.AllModelResolvers.groq)
+        try assertProviderResolvesAllPairs(.huggingface, resolverType: KnownProvider.AllModelResolvers.huggingface)
+        try assertProviderResolvesAllPairs(.kimiCoding, resolverType: KnownProvider.AllModelResolvers.kimiCoding)
+        try assertProviderResolvesAllPairs(.minimax, resolverType: KnownProvider.AllModelResolvers.minimax)
+        try assertProviderResolvesAllPairs(.minimaxCn, resolverType: KnownProvider.AllModelResolvers.minimaxCn)
+        try assertProviderResolvesAllPairs(.mistral, resolverType: KnownProvider.AllModelResolvers.mistral)
+        try assertProviderResolvesAllPairs(.openai, resolverType: KnownProvider.AllModelResolvers.openai)
+        try assertProviderResolvesAllPairs(.openaiCodex, resolverType: KnownProvider.AllModelResolvers.openaiCodex)
+        try assertProviderResolvesAllPairs(.opencode, resolverType: KnownProvider.AllModelResolvers.opencode)
+        try assertProviderResolvesAllPairs(.openrouter, resolverType: KnownProvider.AllModelResolvers.openrouter)
+        try assertProviderResolvesAllPairs(.vercelAiGateway, resolverType: KnownProvider.AllModelResolvers.vercelAiGateway)
+        try assertProviderResolvesAllPairs(.xai, resolverType: KnownProvider.AllModelResolvers.xai)
+        try assertProviderResolvesAllPairs(.zai, resolverType: KnownProvider.AllModelResolvers.zai)
     }
     
     private func assertProviderResolvesAllPairs<R: ModelResolver & CaseIterable>(
@@ -64,6 +64,10 @@ struct ModelTests {
         #expect(throws: ModelResolverError.self) {
             _ = try provider.resolve(for: "__invalid_model_id__")
         }
+    }
+
+    @Test func testModelResolverFromTypes() async throws {
+        try KnownProvider.AllModelResolvers.amazonBedrock.amazonNova2LiteV10.resolve()
     }
 
 }
