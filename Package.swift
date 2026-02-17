@@ -44,6 +44,14 @@ let package = Package(
             ],
             path: "Tools/ModelCodeGen"
         ),
+        .executableTarget(
+            name: "PiAIExampleClient",
+            dependencies: [
+                "PiAI",
+                "SharedType"
+            ],
+            path: "Examples/PiAIExampleClient"
+        ),
         .plugin(
             name: "ModelCodeGenPlugin",
             capability: .command(
